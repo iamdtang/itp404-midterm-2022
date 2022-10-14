@@ -1,13 +1,41 @@
-import React from 'react';
-import ReactDOM from 'react-dom/client';
-import './index.css';
-import App from './App';
-import reportWebVitals from './reportWebVitals';
+import "bootstrap/dist/css/bootstrap.css";
 
-const root = ReactDOM.createRoot(document.getElementById('root'));
+import React from "react";
+import ReactDOM from "react-dom/client";
+import reportWebVitals from "./reportWebVitals";
+import { RouterProvider, createBrowserRouter } from "react-router-dom";
+import Root from "./routes/Root";
+import Index from "./routes/Index";
+import { fetchPlaylist, fetchPlaylists } from "./api";
+import Playlist from "./routes/Playlist";
+
+const router = createBrowserRouter([
+  {
+    path: "/",
+    element: <Root />,
+    loader() {
+      return fetchPlaylists();
+    },
+    children: [
+      {
+        path: "/",
+        element: <Index />,
+      },
+      {
+        path: "/playlists/:playlistId",
+        element: <Playlist />,
+        loader({ params }) {
+          return fetchPlaylist(params.playlistId);
+        },
+      },
+    ],
+  },
+]);
+
+const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
   <React.StrictMode>
-    <App />
+    <RouterProvider router={router} />
   </React.StrictMode>
 );
 

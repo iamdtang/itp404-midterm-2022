@@ -10,18 +10,19 @@ export default function Root() {
           <nav>
             <ul className="nav flex-column">
               <li className="nav-item">
-                {playlists.map((playlist) => {
-                  return (
-                    <Link
-                      to={`/playlists/${playlist.id}`}
-                      key={playlist.id}
-                      className="nav-link"
-                    >
+                <Link to="/" className="nav-link">
+                  Home
+                </Link>
+              </li>
+              {playlists.map((playlist) => {
+                return (
+                  <li className="nav-item" key={playlist.id}>
+                    <Link to={`/playlists/${playlist.id}`} className="nav-link">
                       {playlist.attributes.name}
                     </Link>
-                  );
-                })}
-              </li>
+                  </li>
+                );
+              })}
             </ul>
           </nav>
         </div>

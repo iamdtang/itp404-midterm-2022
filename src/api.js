@@ -1,21 +1,24 @@
 const HOST = "https://chinook-api.herokuapp.com";
+// const HOST = "http://localhost:8000";
+
+function _fetch(url) {
+  return fetch(url).then((response) => {
+    return response.json();
+  });
+}
 
 export function fetchPlaylists() {
-  return fetch(`${HOST}/api/playlists`)
-    .then((response) => {
-      return response.json();
-    })
-    .then((json) => {
-      return json.data;
-    });
+  return _fetch(`${HOST}/api/playlists`).then((json) => {
+    return json.data;
+  });
+}
+
+export async function fetchTracks(search) {
+  return _fetch(`${HOST}/api/tracks?name=${search}`).then((json) => {
+    return json.data;
+  });
 }
 
 export function fetchPlaylist(id) {
-  return fetch(`${HOST}/api/playlists/${id}`).then((response) => {
-    if (response.status >= 400) {
-      return Promise.reject(`Playlist ${id} not found`);
-    }
-
-    return response.json();
-  });
+  return _fetch(`${HOST}/api/playlists/${id}`);
 }

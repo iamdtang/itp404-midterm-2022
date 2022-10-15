@@ -6,7 +6,7 @@ import reportWebVitals from "./reportWebVitals";
 import { RouterProvider, createBrowserRouter } from "react-router-dom";
 import Root from "./routes/Root";
 import Index from "./routes/Index";
-import { fetchPlaylist, fetchPlaylists } from "./api";
+import { fetchPlaylist, fetchPlaylists, fetchTracks } from "./api";
 import Playlist from "./routes/Playlist";
 
 const router = createBrowserRouter([
@@ -20,6 +20,9 @@ const router = createBrowserRouter([
       {
         path: "/",
         element: <Index />,
+        loader() {
+          return fetchTracks();
+        },
       },
       {
         path: "/playlists/:playlistId",

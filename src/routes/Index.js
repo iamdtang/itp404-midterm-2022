@@ -1,48 +1,34 @@
 import { useState } from "react";
-import { fetchTracks } from "../api";
+import { useLoaderData } from "react-router-dom";
 import TracksTable from "../TracksTable";
 
 export default function Index() {
-  const [tracks, setTracks] = useState([]);
+  const tracks = useLoaderData();
+  const [filteredTracks, setFilteredTracks] = useState(tracks);
   const [search, setSearch] = useState("");
-  const [isLoading, setIsLoading] = useState(false);
 
   return (
     <div>
-      <form
-        onSubmit={(event) => {
-          event.preventDefault();
+      <h1>Top 100 Tracks</h1>
 
-          if (search) {
-            setIsLoading(true);
+      <input
+        type="search"
+        placeholder="Search for a track"
+        className="form-control my-3"
+        value={search}
+        onChange={(event) => {
+          const search = event.target.value;
+          setSearch(search);
 
-            fetchTracks(search).then((tracks) => {
-              setIsLoading(false);
-              setTracks(tracks);
-            });
-          } else {
-            setTracks([]);
-          }
+          const filteredTracks = tracks.filter((track) => {
+            return track.attributes.name.indexOf(search) > -1;
+          });
+
+          setFilteredTracks(filteredTracks);
         }}
-      >
-        <input
-          type="search"
-          placeholder="Search for a track"
-          className="form-control my-3"
-          value={search}
-          onChange={(event) => {
-            setSearch(event.target.value);
-          }}
-        />
-      </form>
+      />
 
-      {isLoading && <div>Loading...</div>}
-      {tracks.length > 0 && (
-        <div>
-          <p>Total results: {tracks.length}</p>
-          <TracksTable tracks={tracks} />
-        </div>
-      )}
+      <TracksTable tracks={filteredTracks} />
     </div>
   );
 }

@@ -5,6 +5,7 @@ export default function TracksTable({ tracks }) {
         <tr>
           <th>Name</th>
           <th>Composer</th>
+          <th>Listens</th>
           <th>Price</th>
         </tr>
       </thead>
@@ -15,6 +16,11 @@ export default function TracksTable({ tracks }) {
               <td>{track.attributes.name}</td>
               <td>
                 {track.attributes.composer ? track.attributes.composer : "N/A"}
+              </td>
+              <td>
+                {new Intl.NumberFormat("en-US").format(
+                  track.attributes.listens
+                )}
               </td>
               <td>${track.attributes.price}</td>
             </tr>

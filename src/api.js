@@ -13,8 +13,8 @@ export function fetchPlaylists() {
   });
 }
 
-export async function fetchTracks(search) {
-  return _fetch(`${HOST}/api/tracks?name=${search}`).then((json) => {
+export async function fetchTracks() {
+  return _fetch(`${HOST}/api/tracks`).then((json) => {
     return json.data;
   });
 }

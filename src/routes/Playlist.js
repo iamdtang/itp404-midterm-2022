@@ -8,7 +8,11 @@ export default function Playlist() {
   return (
     <>
       <h1>{json.data.attributes.name}</h1>
-      {tracks ? <TracksTable tracks={tracks} /> : <p>No tracks found.</p>}
+      {tracks ? (
+        <TracksTable tracks={tracks} />
+      ) : (
+        <p>No tracks in this playlist.</p>
+      )}
     </>
   );
 }

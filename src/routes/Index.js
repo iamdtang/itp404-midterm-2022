@@ -3,7 +3,7 @@ import { fetchTracks } from "../api";
 import TracksTable from "../TracksTable";
 
 export default function Index() {
-  const [tracks, setTracks] = useState();
+  const [tracks, setTracks] = useState([]);
   const [search, setSearch] = useState("");
   const [isLoading, setIsLoading] = useState(false);
 
@@ -21,7 +21,7 @@ export default function Index() {
               setTracks(tracks);
             });
           } else {
-            setTracks(null);
+            setTracks([]);
           }
         }}
       >
@@ -37,7 +37,12 @@ export default function Index() {
       </form>
 
       {isLoading && <div>Loading...</div>}
-      {tracks && <TracksTable tracks={tracks} />}
+      {tracks.length > 0 && (
+        <div>
+          <p>Total results: {tracks.length}</p>
+          <TracksTable tracks={tracks} />
+        </div>
+      )}
     </div>
   );
 }

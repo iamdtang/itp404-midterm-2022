@@ -3,12 +3,12 @@ import TracksTable from "../TracksTable";
 
 export default function Playlist() {
   const json = useLoaderData();
+  const tracks = json.included;
 
   return (
     <>
       <h1>{json.data.attributes.name}</h1>
-
-      <TracksTable tracks={json.included} />
+      {tracks ? <TracksTable tracks={tracks} /> : <p>No tracks found.</p>}
     </>
   );
 }

@@ -1,5 +1,5 @@
 export default function TracksTable({ tracks }) {
-  return tracks ? (
+  return (
     <table className="table table-striped table-sm">
       <thead>
         <tr>
@@ -22,7 +22,5 @@ export default function TracksTable({ tracks }) {
         })}
       </tbody>
     </table>
-  ) : (
-    <p>No tracks found.</p>
   );
 }

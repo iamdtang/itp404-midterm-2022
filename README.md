@@ -1,70 +1,53 @@
-# Getting Started with Create React App
+# ITP 404 Midterm
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+Rebuild the following music application with React and React Router v6.4.0 or higher:
 
-## Available Scripts
+https://itp404-midterm-2022.surge.sh/
 
-In the project directory, you can run:
+Your app doesn't need to be styled exactly like the example, but it should have a similar layout. I used Bootstrap but this is not a requirement.
 
-### `npm start`
+1. Your application must behave exactly the same as the example and show the same data.
+1. Your application must have the same client-side routes (URLs).
+1. Your application must use `fetch` instead of `$.ajax`.
+1. Your application shouldn't have any React `key` errors in the console.
+1. All rendering should happen through React. You shouldn't have any jQuery code or `document.` references.
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+Detailed requirements for each section are below.
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+### The Left Navigation (20 points)
 
-### `npm test`
+1. There is a Home link that navigates to `/`.
+1. Fetch all the available playlists from https://chinook-api.herokuapp.com/api/playlists and render each one as a link.
+1. As you click through the links in the navigation, there should not be additional requests to https://chinook-api.herokuapp.com/api/playlists. In other words, only a single request to https://chinook-api.herokuapp.com/api/playlists should happen between page refreshes.
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+### The Home Page (10 points)
 
-### `npm run build`
+1. The URL path for this page is `/`.
+1. Fetch tracks from https://chinook-api.herokuapp.com/api/tracks.
+1. Render the Track Table Component (see below).
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+### The Playlist Details Page (20 points)
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+1. The URL path for this page matches the format `/playlists/:id`.
+1. Fetch a playlist and its tracks via `GET /api/playlists/{id}`, such as https://chinook-api.herokuapp.com/api/playlists/1
+1. Display the name of the playlist
+1. Render the Track Table Component (see below).
+1. If a playlist doesn't contain any tracks, display "No tracks in this playlist.". For example: https://itp404-midterm-2022.surge.sh/playlists/2.
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+### Track Table Component (50)
 
-### `npm run eject`
+1. Display the following track properties in an HTML table:
+1. `name`
+1. `composer`. If there is no composer, display "N/A".
+1. `listens` formatted using commas. This can be achieved with `new Intl.NumberFormat("en-US").format(123456789)` which produces `123,456,789`.
+1. `price`
+1. Search
+1. There should be an input (controlled component) that [filters](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/filter) the list of tracks in the table if a track's name contains what was typed into the search input. This should be case insensitive. Hint: use either [`indexOf`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String/indexOf) or [`includes`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String/includes). For example,
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+```js
+const search = "sand";
+const trackName = "Enter Sandman";
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
-
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+trackName.toLowerCase().includes(search.toLowerCase()); // true
+trackName.toLowerCase().indexOf(search.toLowerCase()) > -1; // true
+```

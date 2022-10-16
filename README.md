@@ -51,7 +51,12 @@ Detailed requirements for each section are below.
    const trackName = "Enter Sandman";
 
    trackName.toLowerCase().includes(search.toLowerCase()); // true
+   trackName.toLowerCase().includes(search); // false
+
+   // OR
+
    trackName.toLowerCase().indexOf(search.toLowerCase()) > -1; // true
+   trackName.toLowerCase().indexOf(search) > -1; // false
    ```
 
    1. If a search doesn't produce any results, render "No tracks found for "[search term here]"." in a `p` tag.

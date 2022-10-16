@@ -44,7 +44,7 @@ Detailed requirements for each section are below.
    1. `price`
 1. Search
 
-   1. There should be an input (controlled component) that [filters](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/filter) the list of tracks in the table if a track's name contains what was typed into the search input. This should be **case insensitive**. Hint: use either [`indexOf`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String/indexOf) or [`includes`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String/includes). For example,
+   1. There should be an input (controlled component) that [filters](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/filter) the list of tracks in the table if a track's name contains what was typed into the search input. This should be **case insensitive**. Hint: use either [`indexOf`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String/indexOf) or [`includes`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String/includes). For example:
 
    ```js
    const search = "sand";

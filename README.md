@@ -23,31 +23,35 @@ Detailed requirements for each section are below.
 ### The Home Page (10 points)
 
 1. The URL path for this page is `/`.
+1. Display "Top 100 Tracks" in an `h1` tag.
 1. Fetch tracks from https://chinook-api.herokuapp.com/api/tracks.
 1. Render the Track Table Component (see below).
 
 ### The Playlist Details Page (20 points)
 
 1. The URL path for this page matches the format `/playlists/:id`.
-1. Fetch a playlist and its tracks via `GET /api/playlists/{id}`, such as https://chinook-api.herokuapp.com/api/playlists/1
-1. Display the name of the playlist
+1. Fetch a playlist and its tracks via `GET /api/playlists/{id}`, such as https://chinook-api.herokuapp.com/api/playlists/1.
+1. Display the name of the playlist in an `h1` tag.
 1. Render the Track Table Component (see below).
-1. If a playlist doesn't contain any tracks, display "No tracks in this playlist.". For example: https://itp404-midterm-2022.surge.sh/playlists/2.
+1. If a playlist doesn't contain any tracks, render "No tracks in this playlist." in a `p` tag. For example: https://itp404-midterm-2022.surge.sh/playlists/2.
 
 ### Track Table Component (50)
 
 1. Display the following track properties in an HTML table:
-1. `name`
-1. `composer`. If there is no composer, display "N/A".
-1. `listens` formatted using commas. This can be achieved with `new Intl.NumberFormat("en-US").format(123456789)` which produces `123,456,789`.
-1. `price`
+   1. `name`
+   1. `composer`. If there is no composer, display "N/A".
+   1. `listens` formatted using commas. This can be achieved with `new Intl.NumberFormat("en-US").format(123456789)` which produces `123,456,789`.
+   1. `price`
 1. Search
-1. There should be an input (controlled component) that [filters](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/filter) the list of tracks in the table if a track's name contains what was typed into the search input. This should be case insensitive. Hint: use either [`indexOf`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String/indexOf) or [`includes`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String/includes). For example,
 
-```js
-const search = "sand";
-const trackName = "Enter Sandman";
+   1. There should be an input (controlled component) that [filters](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/filter) the list of tracks in the table if a track's name contains what was typed into the search input. This should be **case insensitive**. Hint: use either [`indexOf`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String/indexOf) or [`includes`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String/includes). For example,
 
-trackName.toLowerCase().includes(search.toLowerCase()); // true
-trackName.toLowerCase().indexOf(search.toLowerCase()) > -1; // true
-```
+   ```js
+   const search = "sand";
+   const trackName = "Enter Sandman";
+
+   trackName.toLowerCase().includes(search.toLowerCase()); // true
+   trackName.toLowerCase().indexOf(search.toLowerCase()) > -1; // true
+   ```
+
+   1. If a search doesn't produce any results, render "No tracks found for "[search term here]"." in a `p` tag.

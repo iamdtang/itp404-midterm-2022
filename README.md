@@ -54,19 +54,17 @@ Detailed requirements for each section are below.
 1. Search (15 points)
 
    1. There should be an input that is a controlled component.
-   1. Typing into the input [filters](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/filter) the list of tracks in the table if a track's name contains what was typed into the search input. This should be **case insensitive**. Hint: use either [`indexOf`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String/indexOf) or [`includes`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String/includes). For example:
-
-   ```js
-   const search = "sand";
-   const trackName = "Enter Sandman";
-
-   trackName.toLowerCase().includes(search.toLowerCase()); // true
-   trackName.toLowerCase().includes(search); // false
-
-   // OR
-
-   trackName.toLowerCase().indexOf(search.toLowerCase()) > -1; // true
-   trackName.toLowerCase().indexOf(search) > -1; // false
-   ```
-
+   1. Typing into the input [filters](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/filter) the list of tracks in the table if a track's name contains what was typed into the search input. This should be **case insensitive**. Hint: use either [`indexOf`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String/indexOf) or [`includes`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String/includes). See code example at the end of this document.
    1. If a search doesn't produce any results, render "No tracks found for "[search term here]"." in a `p` tag.
+
+How to use `include` and `indexOf` on strings:
+
+```js
+"Enter Sandman".toLowerCase().includes("sand"); // true
+"Enter Sandman".toLowerCase().includes("Sand"); // false
+
+// OR
+
+"Enter Sandman".toLowerCase().indexOf("sand") > -1; // true
+"Enter Sandman".toLowerCase().indexOf("Sand") > -1; // false
+```

@@ -35,23 +35,23 @@ Detailed requirements for each section are below.
 1. Render the tracks in the Track Table Component (see below).
 1. If a playlist doesn't contain any tracks, render "No tracks in this playlist." in a `p` tag. For example: https://itp404-midterm-2022.surge.sh/playlists/2.
 
-### Track Table Component (50)
+### Track Table Component (50 points)
 
-1. Display the following track properties in an HTML table:
+1. Display the following track properties in an HTML table (20 points):
 
    1. `name`
    1. `composer`. If there is no composer, display "N/A".
    1. `listens` formatted using commas. This can be achieved with `new Intl.NumberFormat("en-US").format(123456789)` which produces `123,456,789`.
    1. `price`
 
-1. Light and Dark Mode
+1. Light and Dark Mode (15 points)
 
    1. The "Light" radio button should be checked by default and the table should be in light mode (the `table` tag should have the CSS class `table-light`).
    1. Clicking on the "Dark" radio button should put the table in dark mode (the `table` tag should have the CSS class `table-dark`).
    1. Clicking on the "Light" radio button should put the table in light mode (the `table` tag should have the CSS class `table-light`).
    1. These radio buttons should be controlled components.
 
-1. Search
+1. Search (15 points)
 
    1. There should be an input that is a controlled component.
    1. Typing into the input [filters](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/filter) the list of tracks in the table if a track's name contains what was typed into the search input. This should be **case insensitive**. Hint: use either [`indexOf`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String/indexOf) or [`includes`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String/includes). For example:

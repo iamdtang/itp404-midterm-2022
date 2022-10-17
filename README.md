@@ -25,14 +25,14 @@ Detailed requirements for each section are below.
 1. The URL path for this page is `/`.
 1. Display "Top 100 Tracks" in an `h1` tag.
 1. Fetch tracks from https://chinook-api.herokuapp.com/api/tracks.
-1. Render the Track Table Component (see below).
+1. Render the tracks in the Track Table Component (see below).
 
 ### The Playlist Details Page (20 points)
 
 1. The URL path for this page matches the format `/playlists/:id`.
 1. Fetch a playlist and its tracks via `GET /api/playlists/{id}`, such as https://chinook-api.herokuapp.com/api/playlists/1.
 1. Display the name of the playlist in an `h1` tag.
-1. Render the Track Table Component (see below).
+1. Render the tracks in the Track Table Component (see below).
 1. If a playlist doesn't contain any tracks, render "No tracks in this playlist." in a `p` tag. For example: https://itp404-midterm-2022.surge.sh/playlists/2.
 
 ### Track Table Component (50)

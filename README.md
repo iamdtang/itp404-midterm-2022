@@ -9,7 +9,7 @@ I have provided [most of the HTML using Bootstrap](https://codesandbox.io/s/midt
 1. Your application must behave exactly the same as the example and show the same data.
 1. Your application must have the same client-side routes (URLs).
 1. Your application must use `fetch` instead of `$.ajax`.
-1. Your application shouldn't have any React `key` errors in the console.
+1. Your application shouldn't have any React errors in the console, like the `key` errors.
 1. All rendering should happen through React. You shouldn't have any jQuery code or `document.` references.
 
 Detailed requirements for each section are below.

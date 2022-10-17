@@ -1,10 +1,10 @@
 # ITP 404 Midterm
 
-Rebuild the following music application with React and React Router v6.4.0 or higher:
+Rebuild the following music application with React, React Router v6.4.0 or higher, and Bootstrap:
 
 https://itp404-midterm-2022.surge.sh/
 
-Your app doesn't need to be styled exactly like the example, but it should have a similar layout. I used Bootstrap but this is not a requirement. [I have also provided the HTML layout using Bootstrap here if you'd like to use it as a starting point](https://codesandbox.io/s/midterm-html-skeleton-b2j03j).
+[I have provided most of the HTML using Bootstrap so that you can focus on the functionality](https://codesandbox.io/s/midterm-html-skeleton-b2j03j).
 
 1. Your application must behave exactly the same as the example and show the same data.
 1. Your application must have the same client-side routes (URLs).
@@ -38,13 +38,23 @@ Detailed requirements for each section are below.
 ### Track Table Component (50)
 
 1. Display the following track properties in an HTML table:
+
    1. `name`
    1. `composer`. If there is no composer, display "N/A".
    1. `listens` formatted using commas. This can be achieved with `new Intl.NumberFormat("en-US").format(123456789)` which produces `123,456,789`.
    1. `price`
+
+1. Light and Dark Mode
+
+   1. The "Light" radio button should be checked by default and the table should be in light mode (the `table` tag should have the CSS class `table-light`).
+   1. Clicking on the "Dark" radio button should put the table in dark mode (the `table` tag should have the CSS class `table-dark`).
+   1. Clicking on the "Light" radio button should put the table in light mode (the `table` tag should have the CSS class `table-light`).
+   1. These radio buttons should be controlled components.
+
 1. Search
 
-   1. There should be an input (controlled component) that [filters](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/filter) the list of tracks in the table if a track's name contains what was typed into the search input. This should be **case insensitive**. Hint: use either [`indexOf`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String/indexOf) or [`includes`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String/includes). For example:
+   1. There should be an input that is a controlled component.
+   1. Typing into the input [filters](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/filter) the list of tracks in the table if a track's name contains what was typed into the search input. This should be **case insensitive**. Hint: use either [`indexOf`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String/indexOf) or [`includes`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String/includes). For example:
 
    ```js
    const search = "sand";

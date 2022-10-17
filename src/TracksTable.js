@@ -1,11 +1,35 @@
 import { useState } from "react";
+import RadioButton from "./RadioButton";
 
 export default function TracksTable({ tracks }) {
   const [filteredTracks, setFilteredTracks] = useState(tracks);
   const [search, setSearch] = useState("");
+  const [tableMode, setTableMode] = useState("table-light");
 
   return (
     <>
+      <div className="d-flex justify-content-end">
+        <RadioButton
+          label="Light"
+          id="light"
+          value="table-light"
+          name="table-mode"
+          checked={tableMode === "table-light"}
+          onChange={(event) => {
+            setTableMode(event.target.value);
+          }}
+        />
+        <RadioButton
+          label="Dark"
+          id="dark"
+          value="table-dark"
+          name="table-mode"
+          checked={tableMode === "table-dark"}
+          onChange={(event) => {
+            setTableMode(event.target.value);
+          }}
+        />
+      </div>
       <input
         type="search"
         placeholder="Search for a track"
@@ -32,7 +56,7 @@ export default function TracksTable({ tracks }) {
         }}
       />
       {filteredTracks.length > 0 ? (
-        <table className="table table-striped table-sm">
+        <table className={`table table-striped ${tableMode}`}>
           <thead>
             <tr>
               <th>Name</th>

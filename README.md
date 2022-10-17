@@ -4,7 +4,7 @@ Rebuild the following music application with React, React Router v6.4.0 or highe
 
 https://itp404-midterm-2022.surge.sh/
 
-[I have provided most of the HTML using Bootstrap so that you can focus on the functionality](https://codesandbox.io/s/midterm-html-skeleton-b2j03j).
+I have provided [most of the HTML using Bootstrap](https://codesandbox.io/s/midterm-html-skeleton-b2j03j) so that you can focus on the functionality.
 
 1. Your application must behave exactly the same as the example and show the same data.
 1. Your application must have the same client-side routes (URLs).

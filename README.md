@@ -35,6 +35,8 @@ Detailed requirements for each section are below.
 1. Render the tracks in the Track Table Component (see below).
 1. If a playlist doesn't contain any tracks, render "No tracks in this playlist." in a `p` tag. For example: https://itp404-midterm-2022.surge.sh/playlists/2.
 
+**Note that there is a small bug in the application. If you click between 2 playlists that have tracks, you won't see the tracks update. If you refresh the page however, you will see the tracks for that playlist. If you click between a playlist with tracks and one that doesn't have tracks, you will see the main content area update. You don't need to fix this, but if you do, you won't be deducted. Sorry about that!**
+
 ### Track Table Component (50 points)
 
 1. Display the following track properties in an HTML table (20 points):
